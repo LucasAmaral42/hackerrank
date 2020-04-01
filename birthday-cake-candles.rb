@@ -3,10 +3,26 @@
 require 'json'
 require 'stringio'
 
+def seleciona(ar, maior)
+  ar.select do |v|
+    v == maior
+  end
+end
+
 # Complete the birthdayCakeCandles function below.
 def birthdayCakeCandles(ar)
-    
+  maior = ar[0]
 
+  ar.each do |v|
+    if v > maior
+     maior = v
+      
+    end
+  end
+
+  vet = seleciona ar, maior
+
+  vet.count
 end
 
 fptr = File.open(ENV['OUTPUT_PATH'], 'w')
