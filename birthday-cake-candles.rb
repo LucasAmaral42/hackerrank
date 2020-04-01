@@ -14,10 +14,7 @@ def birthdayCakeCandles(ar)
   maior = ar[0]
 
   ar.each do |v|
-    if v > maior
-     maior = v
-      
-    end
+		maior = v if v > maior
   end
 
   vet = seleciona ar, maior
