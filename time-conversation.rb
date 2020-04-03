@@ -3,20 +3,31 @@
 # timeConversion has the following parameter(s):
 #     s: a string representing time in 12 hour format
 
-def converte(s)
-  s = s.split(':')
+def conversion(s)
+  s = s.split(":")
   s = s.map(&:to_i)
   s[0] += 12 
   s[0] = 0 if s[0] == 24
-	s.join(":")
+  str = []
+  s.each do |n|
+    str.push "%02d" % n
+  end
+  str.join(":")
+end
+
+def is_midnight?(v)
+  v == '12' ? true : false
 end
 
 def timeConversion(s)
   if s.include?('AM')
-    s.delete("AM")
+    s = s.delete("AM")
+    fn = s.split(":")
+    s = conversion(s) if is_midnight?(fn[0])
   else
     s = s.delete("PM")
-    s = converte(s)
+    fn = s.split(":")
+    s = conversion(s) if !is_midnight?(fn[0])
   end
   s
 end
